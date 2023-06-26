@@ -13,7 +13,7 @@ Webcam.attach( '#camera' );
 function tirar_foto()
 {
     Webcam.snap(function(data_uri) {
-        document.getElementById("camera").innerHTML = '<img id="captured_image" src="'+data_uri+'"/>';
+        document.getElementById("result").innerHTML = '<img id="captured_image" src="'+data_uri+'"/>';
     });
 }
 
@@ -30,7 +30,7 @@ console.log('ml5 version:', ml5.version);
     var utter_this=new SpeechSynthesisUtterance(dado_fala1);
     api_speak.speak(utter_this);
   }
-  function check(){
+  function checar(){
     var mostrar_imagem=document.getElementById("captured_image");
     classifier.classify(mostrar_imagem, gotResult());
   }
@@ -39,7 +39,7 @@ console.log('ml5 version:', ml5.version);
       console.error(error);
     }else{
       console.log(results);
-      document.getElementById("result_emotion_name").innerHTML=dado_fala1[0].label;
+      document.getElementById("result_emotion_name").innerHTML=results[0].label;
       previsao1=results[0].label;
       if(previsao1=="vitoria"){
         document.getElementById("update_emoji").innerHTML="&#9996;";
